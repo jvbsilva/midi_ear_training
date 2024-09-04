@@ -1,3 +1,6 @@
+# midi files output
+note_intervals/*.mid
+chord_progressions/*.mid
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
