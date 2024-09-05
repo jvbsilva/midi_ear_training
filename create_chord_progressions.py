@@ -41,15 +41,45 @@ PROGRESSIONS = [
     ["I", "IV", "ii", "V"],
 ]
 
+# PROGRESSIONS = [
+#     # valid progression
+#      ["I", "IV", "ii", "V"],
+#     # wrong progression
+#     ["I", "ii", "x"]
+# ]
 
-def generate_chord_progression(progression, velocity=64, duration=960):
-
+def is_valid_progression(progression:list[str], debug = True) -> bool:
     for chord_symbol in progression:
         chord = CHORDS.get(chord_symbol)
         if not chord:
-            raise ValueError(f"Invalid chord symbol: {chord_symbol}")
+            if debug:
+                raise ValueError(f"Invalid chord symbol '{chord_symbol}' in progression: {progression}")
+            return False
+    return True
 
-    folder_name = "chord_progressions"
+def create_mid_from_progression(progression:list[str], velocity=64, duration=960) -> MidiFile:
+    
+    if is_valid_progression(progression):    
+        mid = MidiFile()
+        track = MidiTrack()
+        mid.tracks.append(track)
+    
+        for chord_symbol in progression:
+            chord = CHORDS.get(chord_symbol)
+
+            # Notes on
+            for note in chord:
+                track.append(Message("note_on", note=note, velocity=velocity, time=0))
+
+            # Notes off
+            track.append(
+                Message("note_off", note=chord[0], velocity=velocity, time=duration)
+            )
+            for note in chord[1:]:
+                track.append(Message("note_off", note=note, velocity=velocity, time=0))
+    return mid
+
+def save_chord_progression(progression: list[str],folder_name:str = "chord_progressions") -> None:
 
     if progression[0].isupper():
         filename = f"major_{'-'.join(progression)}.mid"
@@ -61,27 +91,9 @@ def generate_chord_progression(progression, velocity=64, duration=960):
     if not os.path.exists(folder_name):
         os.makedirs(folder_name)
 
-    mid = MidiFile()
-    track = MidiTrack()
-    mid.tracks.append(track)
-
-    for chord_symbol in progression:
-        chord = CHORDS.get(chord_symbol)
-
-        # Notes on
-        for note in chord:
-            track.append(Message("note_on", note=note, velocity=velocity, time=0))
-
-        # Notes off
-        track.append(
-            Message("note_off", note=chord[0], velocity=velocity, time=duration)
-        )
-        for note in chord[1:]:
-            track.append(Message("note_off", note=note, velocity=velocity, time=0))
-
+    mid = create_mid_from_progression(progression)
     mid.save(file_path)
-
-
+    
 if __name__ == "__main__":
     for progression in PROGRESSIONS:
-        generate_chord_progression(progression)
+        save_chord_progression(progression)
