@@ -1,2 +1,7 @@
 # midi_ear_training
-Scripts para gerar arquivos midi para treinar a o ouvido a identificar intervalo entre notas e progressão de acordes.
+Joguinho para treinar o ouvido para identificar progressões de acordes e intervalos entre notas.
+Até o momento apenas a parte de progressões está desenvolvida.
+
+Modo de uso:
+1) Execute o script create_chod_progressions.py para popular o disco com os arquivos midi correspondente às progressos
+2) Uma vez que os midis já tenham sido criados basta executar o script chord_progression_game.py para jogar.
