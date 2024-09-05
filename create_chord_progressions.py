@@ -9,13 +9,13 @@ CHORDS = {
     "II": [62, 66, 69],  # D major chord: D4, F#4, A4
     "iii": [64, 67, 71],  # E minor chord: E4, G4, B4
     "III": [64, 68, 71],  # E major chord: E4, G#4, B4
-    "iv": [65, 68, 72],  # F minor chord: F4, A4, C5
+    "iv": [65, 68, 72],  # F minor chord: F4, Ab4, C5
     "IV": [65, 69, 72],  # F major chord: F4, A4, C5
     "v": [67, 70, 74],  # G minor chord: G4, Bb4, D5
     "V": [67, 71, 74],  # G major chord: G4, B4, D5
     "vi": [69, 72, 76],  # A minor chord: A4, C5, E5
     "VI": [69, 73, 76],  # A major chord: A4, C#5, E5
-    "vii": [71, 74, 78],  # B diminished chord: B4, D5, F5
+    "vii": [71, 74, 78],  # B minor chord: B4, D5, F#5
     "VII": [71, 75, 78],  # B major chord: B4, D#5, F#5
 }
 
@@ -27,7 +27,6 @@ PROGRESSIONS = [
     ["i", "VI", "III", "VII"],
     ["ii", "v", "i"],
     ["i", "iv", "v", "i"],
-    ["VI", "VII", "i", "i"],
     ["i", "VII", "VI", "VII"],
     ["i", "iv", "i"],
     # Major key
