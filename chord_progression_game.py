@@ -15,18 +15,25 @@ def get_song():
     return file_name, file_path, progression_name
 
 
-if __name__ == "__main__":
-    pygame.init()
-
-    file_name, file_path, progression_name = get_song()
+def play_song(file_path):
     pygame.mixer.music.load(file_path)
     pygame.mixer.music.play()
+    while pygame.mixer.music.get_busy():
+        pygame.time.wait(1000)
+
+
+if __name__ == "__main__":
 
     print("***************************************************")
     print("* Welcome to the chord progression guessing game! *")
     print("***************************************************")
     print("Press 'Q' to exit the game.")
     print("Press 'R' to listen again.")
+
+    pygame.init()
+
+    file_name, file_path, progression_name = get_song()
+    play_song(file_path)
 
     right_answer = False
     user_input = ""
@@ -51,25 +58,18 @@ if __name__ == "__main__":
 
             if user_input.upper() == "Y":
                 file_name, file_path, progression_name = get_song()
-                pygame.mixer.music.load(file_path)
-                pygame.mixer.music.play()
+                play_song(file_path)
                 continue
             pygame.quit()
             break
 
-        user_progression = user_input.split(" ")
-        if is_valid_progression(user_progression):
+        user_progression = user_input.strip().split()
+        if is_valid_progression(user_progression, debug=False):
             user_progression_mid = create_mid_from_progression(user_progression)
             user_progression_mid.save(TEMP_FILE)
-            pygame.mixer.music.load(TEMP_FILE)
-            pygame.mixer.music.play()
-            while pygame.mixer.music.get_busy():
-                pygame.time.wait(1000)
+            play_song(TEMP_FILE)
 
         print("WRONG ANSWER!!")
-        user_input = input("Keep trying? [Y/N]: ")
-        if user_input.upper() == "Y":
-            user_input = "R"
 
     if not right_answer:
         print(f"Right answer was: {progression_name}")
