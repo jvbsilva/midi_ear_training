@@ -30,7 +30,6 @@ if __name__ == "__main__":
     right_answer = False
     user_input = ""
 
-    print(progression_name)
     while True:
         
         user_input = input("Enter your answer: ")
