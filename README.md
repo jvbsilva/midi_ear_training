@@ -17,3 +17,7 @@ Regras:
 **OBS 1:** As progressões que fazem parte do jogo estão armazenadas na lista `PROGRESSIONS` no arquivo `create_chord_progressions.py`. Caso queria adicionar ou excluir progressões basta alterar essa lista.
 
 **OBS 2:** Caso queira gerar todas as progressões e armanezar em disco para inspeção basta executar o script `create_chord_progressions.py`
+
+
+Próximos passos:
+- Armazenar o número de tentativas que o usuário levou até acertar em um banco de dados para que ele possa acompanhar seu progresso.
