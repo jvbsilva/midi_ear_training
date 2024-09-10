@@ -1,8 +1,8 @@
 import pygame
 import random
 import os
-from create_chord_progressions import is_valid_progression, create_mid_from_progression, save_chord_progression
-from create_chord_progressions import CHORDS, PROGRESSIONS
+from create_chord_progressions import is_valid_progression, create_mid_from_progression
+from create_chord_progressions import PROGRESSIONS
 
 TARGET_PROG_FILE = "target_progression.mid"
 USER_PROG_FILE = "user_progression.mid"
