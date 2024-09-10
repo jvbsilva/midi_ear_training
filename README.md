@@ -14,4 +14,5 @@ Regras:
 
 - Ao entrar uma sequência válida o jogo irá reproduzí-la para que o usuário possa comparar com o som da sequência alvo.
 
-**OBS:** Caso queira gerar todas as progressões e armanezar em disco para inspeção basta executar o script `create_chord_progressions.py`
+**OBS 1:** As progressões que fazem parte do jogo estão armazenadas na lista `PROGRESSIONS` no arquivo `create_chord_progressions.py`. Caso queria adicionar ou excluir progressões basta alterar essa lista.
+**OBS 2:** Caso queira gerar todas as progressões e armanezar em disco para inspeção basta executar o script `create_chord_progressions.py`
